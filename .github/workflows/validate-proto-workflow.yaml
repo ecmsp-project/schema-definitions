@@ -1,0 +1,25 @@
+name: Validate Proto Artifacts using Buf
+
+on:
+    pull_request:
+        branches: [main]
+
+
+jobs:
+    validate-proto:
+        runs-on: ubuntu-latest
+
+        steps:
+            - 
+                name: Checkout
+                uses: actions/checkout@v4
+                
+            - 
+                name: Install Buf CLI
+                run: |
+                    curl -sSL https://github.com/bufbuild/buf/releases/download/v1.48.0/buf-Linux-x86_64 -o /usr/local/bin/buf
+                    chmod +x /usr/local/bin/buf
+
+            -
+                name: Lint Proto files using Buf
+                run: buf lint protos/
