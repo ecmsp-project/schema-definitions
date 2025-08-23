@@ -1,0 +1,10 @@
+syntax = "proto3";
+import "com/ecmsp/events/cart/v1/cart_item.proto";
+
+
+package com.ecmsp.events.cart.v1;
+
+message CartCreatedEvent {
+  string client_id = 1;
+  repeated CartItem items = 2;
+}

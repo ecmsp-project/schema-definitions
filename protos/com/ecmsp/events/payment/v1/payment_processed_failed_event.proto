@@ -1,0 +1,9 @@
+syntax = "proto3";
+package com.ecmsp.events.payment.v1;
+
+import "google/protobuf/timestamp.proto";
+message PaymentProcessedFailedEvent {
+  string order_id = 1;
+  string payment_id = 2;
+  google.protobuf.Timestamp processed_at = 3;
+}
