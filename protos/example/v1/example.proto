@@ -1,4 +1,5 @@
 syntax = "proto3";
+
 package example.v1;
 
 option java_multiple_files = true;
@@ -6,7 +7,7 @@ option java_package = "com.ecmsp.protos.example.v1";
 option java_outer_classname = "ExampleProto";
 
 message Example {
-  string id = 1;
-  string name = 2;
-  double price = 3;
+    string id = 1;
+    string name = 2;
+    double price = 3;
 }
