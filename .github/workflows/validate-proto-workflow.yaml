@@ -25,6 +25,17 @@ jobs:
                 run: buf lint protos/
 
             -
+                name: Setup Java
+                uses: actions/setup-java@v3
+                with:
+                    distribution: 'temurin'
+                    java-version: '21'
+
+            - 
+                name: Install Protoc
+                uses: arduino/setup-protoc@v3       
+
+            -
                 name: Copy Proto files to separate folder
                 run: |
                     mkdir -p generated/src/main/java/
