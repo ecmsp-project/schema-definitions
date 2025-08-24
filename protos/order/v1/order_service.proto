@@ -1,0 +1,94 @@
+syntax = "proto3";
+import "order/v1/order_status.proto";
+package order.v1;
+
+option java_multiple_files = true;
+option java_package = "com.ecmsp.order.v1";
+option java_outer_classname = "OrderServiceProto";
+
+service OrderService {
+  rpc GetOrder(GetOrderRequest) returns (GetOrderResponse);
+  rpc CreateOrder(CreateOrderRequest) returns (CreateOrderResponse);
+  rpc UpdateOrder(UpdateOrderRequest) returns (UpdateOrderResponse);
+  rpc DeleteOrder(DeleteOrderRequest) returns (DeleteOrderResponse);
+  rpc ListOrders(ListOrdersRequest) returns (ListOrdersResponse);
+}
+
+message GetOrderRequest {
+  string order_id = 1;
+}
+
+message CreateOrderRequest {
+  string client_id = 1;
+  repeated OrderItem items = 2;
+}
+
+message UpdateOrderRequest {
+  string order_id = 1;
+  OrderStatus order_status = 2;
+}
+
+message DeleteOrderRequest {
+  string order_id = 1;
+}
+
+message ListOrdersRequest {
+  // it calls all orders so no fields are necessary
+}
+
+message OrderItem {
+  string item_id = 1;
+  int32 quantity = 2;
+  double price = 3;
+}
+
+message GetOrderResponse {
+  string order_id = 1;
+  string client_id = 2;
+  OrderStatus order_status = 3;
+  string date = 4;
+  repeated OrderItemDetails items = 5;
+//  maybe add total price field here
+}
+
+message CreateOrderResponse {
+  string order_id = 1;
+  string client_id = 2;
+  OrderStatus order_status = 3;
+  string date = 4;
+  repeated OrderItemDetails items = 5;
+  //  maybe add total price field here
+}
+
+message UpdateOrderResponse {
+  string order_id = 1;
+  string client_id = 2;
+  OrderStatus order_status = 3;
+  string date = 4;
+  repeated OrderItemDetails items = 5;
+  //  maybe add total price field here
+}
+
+message OrderResponse {
+  string order_id = 1;
+  string client_id = 2;
+  OrderStatus order_status = 3;
+  string date = 4;
+  repeated OrderItemDetails items = 5;
+  //  maybe add total price field here
+}
+
+
+
+message OrderItemDetails {
+  string item_id = 1;
+  int32 quantity = 2;
+}
+
+message DeleteOrderResponse {
+  bool success = 1;
+}
+
+message ListOrdersResponse {
+  repeated OrderResponse orders = 1;
+}
