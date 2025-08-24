@@ -23,3 +23,42 @@ jobs:
             -
                 name: Lint Proto files using Buf
                 run: buf lint protos/
+
+            -
+                name: Setup Java
+                uses: actions/setup-java@v3
+                with:
+                    distribution: 'temurin'
+                    java-version: '21'
+
+            - 
+                name: Install Protoc
+                uses: arduino/setup-protoc@v3       
+
+            -
+                name: Copy Proto files to separate folder
+                run: |
+                    mkdir -p generated/src/main/java/
+                    mkdir -p generated/src/main/proto
+                    
+                    cp -r protos generated/src/main/proto
+                    cp pom-validate.xml generated/pom.xml
+
+            - 
+                name: Download protoc-gen-grpc-java
+                run: |
+                    mkdir -p protoc-bin
+                    curl -L -o protoc-bin/protoc-gen-grpc-java \
+                        https://repo1.maven.org/maven2/io/grpc/protoc-gen-grpc-java/1.71.0/protoc-gen-grpc-java-1.71.0-linux-x86_64.exe
+                    chmod +x protoc-bin/protoc-gen-grpc-java
+
+            - 
+                name: Validate project using Maven
+                working-directory: ./generated
+                run: |
+                    protoc -I=src/main/proto \
+                        --java_out=src/main/java \
+                        --grpc-java_out=src/main/java \
+                        --plugin=protoc-gen-grpc-java=../protoc-bin/protoc-gen-grpc-java \
+                        $(find src/main/proto -name "*.proto")
+                    mvn clean compile     
