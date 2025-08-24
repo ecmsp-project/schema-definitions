@@ -39,7 +39,7 @@ jobs:
                     mkdir -p generated/src/main/java/
                     mkdir -p generated/src/main/proto
                     
-                    cp -r protos generated/src/main/proto
+                    cp -r protos/* generated/src/main/proto
                     cp .m2/settings.xml generated/.m2/
                     cp pom.xml generated/
 

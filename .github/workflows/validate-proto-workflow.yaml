@@ -41,7 +41,7 @@ jobs:
                     mkdir -p generated/src/main/java/
                     mkdir -p generated/src/main/proto
                     
-                    cp -r protos generated/src/main/proto
+                    cp -r protos/* generated/src/main/proto
                     cp pom-validate.xml generated/pom.xml
 
             - 
