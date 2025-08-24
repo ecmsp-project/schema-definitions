@@ -43,6 +43,10 @@ jobs:
                     
                     cp -r protos/* generated/src/main/proto
                     cp pom-validate.xml generated/pom.xml
+                    
+            - 
+                name: List proto files
+                run: ls -R generated/src/main/proto
 
             - 
                 name: Download protoc-gen-grpc-java
