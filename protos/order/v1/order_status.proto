@@ -1,0 +1,16 @@
+syntax = "proto3";
+package order.v1;
+
+
+option java_multiple_files = true;
+option java_package = "com.ecmsp.order.v1";
+option java_outer_classname = "OrderStatusProto";
+
+enum OrderStatus {
+  ORDER_STATUS_UNSPECIFIED = 0;
+  ORDER_STATUS_PENDING = 1;
+  ORDER_STATUS_PROCESSING = 2;
+  ORDER_STATUS_PAID = 3;
+  ORDER_STATUS_FAILED = 4;
+  ORDER_STATUS_CANCELLED = 5;
+}
