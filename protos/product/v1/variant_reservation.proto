@@ -13,7 +13,7 @@ message CreateVariantsReservationRequest {
 }
 
 message CreateVariantsReservationResponse {
-	string reservation_id = 1;
+  string reservation_id = 1;
   repeated string reserved_variant_ids = 3;
   repeated FailedReservationVariant failed_variants = 4;
 }
