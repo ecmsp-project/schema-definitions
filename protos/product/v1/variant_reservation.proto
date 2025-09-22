@@ -1,0 +1,52 @@
+syntax = "proto3";
+
+package product.v1;
+
+option java_multiple_files = true;
+option java_package = "com.ecmsp.product.v1";
+option java_outer_classname = "VariantReservationProto";
+
+// -----------------------------------------------
+
+message CreateVariantsReservationRequest {
+  repeated Variant items = 1;
+}
+
+message CreateVariantsReservationResponse {
+  string reservation_id = 1;
+  repeated string reserved_variant_ids = 3;
+  repeated FailedReservationVariant failed_variants = 4;
+}
+
+message FailedReservationVariant {
+  string variant_id = 1;
+  int32 requested_quantity = 2;
+  int32 available_quantity = 3;
+}
+
+// -----------------------------------------------
+
+message RemoveVariantsReservationRequest {
+  string reservation_id = 1;
+}
+
+message RemoveVariantsReservationResponse {
+  string message = 2;
+}
+
+// -----------------------------------------------
+
+message GetVariantsReservationRequest {
+  string reservation_id = 1;
+}
+
+message GetVariantsReservationResponse {
+	repeated Variant items = 1;
+}
+
+// -----------------------------------------------
+
+message Variant {
+  string variant_id = 1;
+  int32 quantity = 2;
+}
