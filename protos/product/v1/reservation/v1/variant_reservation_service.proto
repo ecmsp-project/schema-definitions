@@ -3,7 +3,7 @@ syntax = "proto3";
 package product.v1.reservation.v1;
 
 option java_multiple_files = true;
-option java_package = "com.ecmsp.product.v1";
+option java_package = "com.ecmsp.product.v1.reservation.v1";
 option java_outer_classname = "VariantReservationServiceProto";
 
 import "product/v1/reservation/v1/variant_reservation.proto";
