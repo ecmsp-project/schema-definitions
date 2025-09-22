@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package product.v1;
+package product.v1.reservation.v1;
 
 option java_multiple_files = true;
 option java_package = "com.ecmsp.product.v1";
