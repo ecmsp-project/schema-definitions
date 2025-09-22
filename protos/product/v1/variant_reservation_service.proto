@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package product.v1;
+
+option java_multiple_files = true;
+option java_package = "com.ecmsp.product.v1";
+option java_outer_classname = "VariantReservationServiceProto";
+
+import "product/v1/variant_reservation.proto";
+
+service VariantReservationService {
+  rpc CreateVariantsReservation(CreateVariantsReservationRequest) returns (CreateVariantsReservationResponse);
+  rpc RemoveVariantsReservation(RemoveVariantsReservationRequest) returns (RemoveVariantsReservationResponse);
+
+  rpc GetVariantsReservation(GetVariantsReservationRequest) returns (GetVariantsReservationResponse);
+}
