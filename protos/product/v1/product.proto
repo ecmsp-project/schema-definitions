@@ -28,7 +28,7 @@ message GetProductDetailsRequest {
 }
 
 message GetProductDetailsResponse {
-	repeated Variant variants = 1;
+	repeated VariantDetail variants = 1;
 }
 
 // -----------------------------------------------
@@ -50,10 +50,10 @@ message GetProductsByQueryResponse {
 
 message ProductRepresentation {
 	string product_id = 1;
-	Variant variant = 2;
+	VariantDetail variant = 2;
 }
 
-message Variant {
+message VariantDetail {
 	string variant_id = 1;
 	double price = 2;
 

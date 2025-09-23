@@ -9,7 +9,7 @@ option java_outer_classname = "VariantReservationProto";
 // -----------------------------------------------
 
 message CreateVariantsReservationRequest {
-  repeated Variant items = 1;
+  repeated ReservedVariant items = 1;
 }
 
 message CreateVariantsReservationResponse {
@@ -41,12 +41,12 @@ message GetVariantsReservationRequest {
 }
 
 message GetVariantsReservationResponse {
-	repeated Variant items = 1;
+	repeated ReservedVariant items = 1;
 }
 
 // -----------------------------------------------
 
-message Variant {
+message ReservedVariant {
   string variant_id = 1;
   int32 quantity = 2;
 }
