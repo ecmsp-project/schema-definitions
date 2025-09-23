@@ -1,0 +1,68 @@
+syntax = "proto3";
+
+package product.v1;
+
+option java_multiple_files = true;
+option java_package = "com.ecmsp.product.v1";
+option java_outer_classname = "ProductProto";
+
+import "google/protobuf/struct.proto";
+
+// -----------------------------------------------
+
+message GetProductsRequest {
+  string category_id = 1;
+  int32 page_size = 2;
+  string page_token = 3;
+}
+
+message GetProductsResponse {
+  repeated ProductRepresentation products_representation = 1;
+	string next_page_token = 2;
+}
+
+// -----------------------------------------------
+
+message GetProductDetailsRequest {
+	string product_id = 1;
+}
+
+message GetProductDetailsResponse {
+	repeated Variant variants = 1;
+}
+
+// -----------------------------------------------
+
+message GetProductsByQueryRequest {
+	string query = 1;
+	string category_id = 2; // it is optional, so can be left here
+
+	int32 page_size = 3;
+	string page_token = 4;
+}
+
+message GetProductsByQueryResponse {
+	repeated ProductRepresentation products_representation = 1;
+	string next_page_token = 2;
+}
+
+// -----------------------------------------------
+
+message ProductRepresentation {
+	string product_id = 1;
+	Variant variant = 2;
+}
+
+message Variant {
+	string variant_id = 1;
+	double price = 2;
+
+	int32 stock_quantity = 3;
+	string image_url = 4;
+
+	string description = 5;
+	google.protobuf.Struct additional_properties = 6;
+
+}
+
+// -----------------------------------------------
