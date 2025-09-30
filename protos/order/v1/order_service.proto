@@ -6,12 +6,15 @@ option java_multiple_files = true;
 option java_package = "com.ecmsp.order.v1";
 option java_outer_classname = "OrderServiceProto";
 
+
+//TODO remove all the methods that are not necessary for the frontend client
 service OrderService {
   rpc GetOrder(GetOrderRequest) returns (GetOrderResponse);
   rpc CreateOrder(CreateOrderRequest) returns (CreateOrderResponse);
   rpc UpdateOrder(UpdateOrderRequest) returns (UpdateOrderResponse);
   rpc DeleteOrder(DeleteOrderRequest) returns (DeleteOrderResponse);
   rpc ListOrders(ListOrdersRequest) returns (ListOrdersResponse);
+  rpc ListOrdersByUserId(ListOrdersByUserIdRequest) returns (ListOrdersByUserIdResponse);
 }
 
 message GetOrderRequest {
@@ -34,6 +37,10 @@ message DeleteOrderRequest {
 
 message ListOrdersRequest {
   // it calls all orders so no fields are necessary
+}
+
+message ListOrdersByUserIdRequest {
+  string user_id = 1;
 }
 
 message OrderItem {
@@ -90,5 +97,9 @@ message DeleteOrderResponse {
 }
 
 message ListOrdersResponse {
+  repeated OrderResponse orders = 1;
+}
+
+message ListOrdersByUserIdResponse {
   repeated OrderResponse orders = 1;
 }
