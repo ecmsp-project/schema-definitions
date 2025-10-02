@@ -9,14 +9,14 @@ option java_outer_classname = "ProductServiceProto";
 import "product/v1/product.proto";
 
 service ProductService {
-    // Searches for products based on category and returns only one variant per product, as a representative
-    rpc GetProducts(GetProductsRequest) returns (GetProductsResponse);
+  // Searches for products based on category and returns only one variant per product, as a representative
+  rpc GetProducts(GetProductsRequest) returns (GetProductsResponse);
 
-    // Searches for products based on provided query (and category) and returns only one variant per product, as a representative
-    rpc GetProductsByQuery(GetProductsByQueryRequest) returns (GetProductsByQueryResponse);
+  // Searches for products based on provided query (and category) and returns only one variant per product, as a representative
+  rpc GetProductsByQuery(GetProductsByQueryRequest) returns (GetProductsByQueryResponse);
 
-    // Searches for product details (including all variants). Returns images, prices, descriptions etc. 
-    rpc GetProductDetails(GetProductDetailsRequest) returns (GetProductDetailsResponse);
+  // Searches for product details (including all variants). Returns images, prices, descriptions etc. 
+  rpc GetProductDetails(GetProductDetailsRequest) returns (GetProductDetailsResponse);
 }
 
 
