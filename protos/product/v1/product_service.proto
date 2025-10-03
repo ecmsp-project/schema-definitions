@@ -15,8 +15,8 @@ service ProductService {
   // Searches for products based on provided query (and category) and returns only one variant per product, as a representative
   rpc GetProductsByQuery(GetProductsByQueryRequest) returns (GetProductsByQueryResponse);
 
-  // Searches for product details (including all variants). Returns images, prices, descriptions etc. 
-  rpc GetProductDetails(GetProductDetailsRequest) returns (GetProductDetailsResponse);
+  // Searches for variants details of a particular product. Returns images, prices, descriptions etc. 
+  rpc GetVariantsDetails(GetVariantsDetailsRequest) returns (GetVariantsDetailsResponse);
 }
 
 
