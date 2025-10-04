@@ -7,46 +7,34 @@ option java_package = "com.ecmsp.order.v1";
 option java_outer_classname = "OrderServiceProto";
 
 
-//TODO remove all the methods that are not necessary for the frontend client
 service OrderService {
   rpc GetOrder(GetOrderRequest) returns (GetOrderResponse);
-  rpc CreateOrder(CreateOrderRequest) returns (CreateOrderResponse);
-  rpc UpdateOrder(UpdateOrderRequest) returns (UpdateOrderResponse);
-  rpc DeleteOrder(DeleteOrderRequest) returns (DeleteOrderResponse);
+  rpc GetOrderStatus(GetOrderStatusRequest) returns (GetOrderStatusResponse);
+  rpc GetOrderItems(GetOrderItemsRequest) returns (GetOrderItemsResponse);
   rpc ListOrders(ListOrdersRequest) returns (ListOrdersResponse);
   rpc ListOrdersByUserId(ListOrdersByUserIdRequest) returns (ListOrdersByUserIdResponse);
+  rpc UpdateOrder(UpdateOrderRequest) returns (UpdateOrderResponse);
+
+  //TODO: REMOVE BELOW - DEPRECATED
+  rpc CreateOrder(CreateOrderRequest) returns (CreateOrderResponse);
+  rpc DeleteOrder(DeleteOrderRequest) returns (DeleteOrderResponse);
 }
 
-message GetOrderRequest {
-  string order_id = 1;
-}
-
-message CreateOrderRequest {
-  string client_id = 1;
-  repeated OrderItem items = 2;
-}
-
-message UpdateOrderRequest {
-  string order_id = 1;
-  OrderStatus order_status = 2;
-}
-
-message DeleteOrderRequest {
-  string order_id = 1;
-}
-
-message ListOrdersRequest {
-  // it calls all orders so no fields are necessary
-}
-
-message ListOrdersByUserIdRequest {
-  string user_id = 1;
-}
 
 message OrderItem {
   string item_id = 1;
   int32 quantity = 2;
   double price = 3;
+}
+
+//TODO: NEEDS TO BE UPDATED AS FOR NOW THERE IS MORE FIELDS
+message OrderItemDetails {
+  string item_id = 1;
+  int32 quantity = 2;
+}
+
+message GetOrderRequest {
+  string order_id = 1;
 }
 
 message GetOrderResponse {
@@ -55,17 +43,47 @@ message GetOrderResponse {
   OrderStatus order_status = 3;
   string date = 4;
   repeated OrderItemDetails items = 5;
-//  maybe add total price field here
 }
 
-message CreateOrderResponse {
+
+
+message GetOrderStatusRequest {
   string order_id = 1;
-  string client_id = 2;
-  OrderStatus order_status = 3;
-  string date = 4;
-  repeated OrderItemDetails items = 5;
-  //  maybe add total price field here
 }
+
+message GetOrderStatusResponse {
+  string order_id = 1;
+  OrderStatus order_status = 2;
+}
+
+message GetOrderItemsRequest {
+  string order_id = 1;
+}
+
+message GetOrderItemsResponse {
+  repeated OrderItemDetails items = 1;
+}
+
+
+
+message ListOrdersRequest {
+}
+
+message ListOrdersResponse {
+  repeated GetOrderResponse orders = 1;
+}
+
+message ListOrdersByUserIdRequest {
+}
+
+message ListOrdersByUserIdResponse {
+  repeated GetOrderResponse orders = 1;
+}
+
+
+
+
+// DEPRECATED
 
 message UpdateOrderResponse {
   string order_id = 1;
@@ -76,30 +94,28 @@ message UpdateOrderResponse {
   //  maybe add total price field here
 }
 
-message OrderResponse {
+message UpdateOrderRequest {
+  string order_id = 1;
+}
+
+message CreateOrderResponse {
   string order_id = 1;
   string client_id = 2;
   OrderStatus order_status = 3;
   string date = 4;
   repeated OrderItemDetails items = 5;
-  //  maybe add total price field here
 }
 
-
-
-message OrderItemDetails {
-  string item_id = 1;
-  int32 quantity = 2;
+message CreateOrderRequest {
+  string client_id = 1;
+  repeated OrderItem items = 2;
 }
 
 message DeleteOrderResponse {
   bool success = 1;
 }
 
-message ListOrdersResponse {
-  repeated OrderResponse orders = 1;
+message DeleteOrderRequest {
+  string order_id = 1;
 }
 
-message ListOrdersByUserIdResponse {
-  repeated OrderResponse orders = 1;
-}
