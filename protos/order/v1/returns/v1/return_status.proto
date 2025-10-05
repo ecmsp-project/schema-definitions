@@ -1,0 +1,13 @@
+syntax = "proto3";
+package order.v1.returns.v1;
+
+option java_multiple_files = true;
+option java_package = "com.ecmsp.order.v1.returns.v1";
+option java_outer_classname = "ReturnStatusProto";
+
+enum ReturnStatus {
+  RETURN_STATUS_UNSPECIFIED = 0;
+  RETURN_STATUS_REQUESTED = 1;
+  RETURN_STATUS_PROCESSING = 2;
+  RETURN_STATUS_COMPLETED = 3;
+}
