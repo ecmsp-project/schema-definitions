@@ -18,7 +18,7 @@ service ReturnService {
 
 message CreateReturnRequest {
   string order_id = 1;
-  repeated ReturnItemReason items = 2;
+  repeated ItemReturnDetails items = 2;
 }
 
 message CreateReturnResponse {
