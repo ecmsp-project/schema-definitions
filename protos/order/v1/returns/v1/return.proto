@@ -1,0 +1,21 @@
+syntax = "proto3";
+package order.v1.returns.v1;
+
+option java_multiple_files = true;
+option java_package = "com.ecmsp.order.v1.returns.v1";
+option java_outer_classname = "ReturnProto";
+
+import "order/v1/returns/v1/return_status.proto";
+
+message ReturnItemReason {
+  string item_id = 1;
+  string reason = 2;
+}
+
+message Return {
+  string return_id = 1;
+  string order_id = 2;
+  repeated string item_ids = 3;
+  ReturnStatus status = 4;
+  string created_at = 5;
+}

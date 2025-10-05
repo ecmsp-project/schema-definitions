@@ -39,7 +39,7 @@ message GetOrderRequest {
 
 message GetOrderResponse {
   string order_id = 1;
-  string client_id = 2;
+  string client_id = 2; // client id should be removed
   OrderStatus order_status = 3;
   string date = 4;
   repeated OrderItemDetails items = 5;
@@ -84,7 +84,6 @@ message ListOrdersByUserIdResponse {
 
 
 // DEPRECATED
-
 message UpdateOrderResponse {
   string order_id = 1;
   string client_id = 2;
