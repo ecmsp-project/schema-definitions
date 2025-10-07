@@ -19,11 +19,11 @@ message OrderItemDetails {
 message Order {
   string order_id = 1;
   string reservation_id = 2;
-  string client_id = 3;
-  OrderStatus order_status = 4;
-  string date = 5;
-  repeated OrderItemDetails items = 6;
+  OrderStatus order_status = 3;
+  string date = 4;
+  repeated OrderItemDetails items = 5;
 }
+
 
 
 
