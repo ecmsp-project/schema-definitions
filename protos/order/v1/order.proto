@@ -1,0 +1,29 @@
+syntax = "proto3";
+package order.v1;
+
+option java_multiple_files = true;
+option java_package = "com.ecmsp.order.v1";
+option java_outer_classname = "OrderProto";
+import "order/v1/order_status.proto";
+
+message OrderItemDetails {
+  string item_id = 1;
+  string variant_id = 2;
+  int32 quantity = 3;
+  double price = 4;
+  string image_url = 5;
+  string description = 6;
+  bool is_returnable = 7;
+}
+
+message Order {
+  string order_id = 1;
+  string reservation_id = 2;
+  string client_id = 3;
+  OrderStatus order_status = 4;
+  string date = 5;
+  repeated OrderItemDetails items = 6;
+}
+
+
+
