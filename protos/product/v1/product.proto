@@ -7,6 +7,7 @@ option java_package = "com.ecmsp.product.v1";
 option java_outer_classname = "ProductProto";
 
 import "google/protobuf/struct.proto";
+import "google/type/decimal.proto";
 
 // -----------------------------------------------
 
@@ -23,11 +24,11 @@ message GetProductsResponse {
 
 // -----------------------------------------------
 
-message GetProductDetailsRequest {
+message GetVariantsDetailsRequest {
 	string product_id = 1;
 }
 
-message GetProductDetailsResponse {
+message GetVariantsDetailsResponse {
 	repeated VariantDetail variants = 1;
 }
 
@@ -41,6 +42,7 @@ message GetProductsByQueryRequest {
 	string page_token = 4;
 }
 
+// Returns the products and one of its variant, as an representative on the website
 message GetProductsByQueryResponse {
 	repeated ProductRepresentation products_representation = 1;
 	string next_page_token = 2;
@@ -55,7 +57,7 @@ message ProductRepresentation {
 
 message VariantDetail {
 	string variant_id = 1;
-	double price = 2;
+	google.type.Decimal price = 2;
 
 	int32 stock_quantity = 3;
 	string image_url = 4;

@@ -5,3 +5,5 @@ breaking:
 lint:
   use:
     - STANDARD
+  ignore:
+    - google/type/decimal.proto
