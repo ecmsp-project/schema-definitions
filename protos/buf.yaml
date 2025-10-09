@@ -5,6 +5,5 @@ breaking:
 lint:
   use:
     - STANDARD
-
-deps:
-  - buf.build/googleapis/googleapis
+  ignore:
+    - google/type/decimal.proto
