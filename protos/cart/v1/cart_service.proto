@@ -1,0 +1,78 @@
+syntax = "proto3";
+
+import "cart/v1/cart.proto";
+package cart.v1;
+
+option java_multiple_files = true;
+option java_package = "com.ecmsp.cart.v1";
+option java_outer_classname = "CartServiceProto";
+
+
+// CartService provides operations for managing shopping carts
+service CartService {
+  // Get cart by user (creates new if doesn't exist)
+  rpc GetCart(GetCartRequest) returns (GetCartResponse);
+
+  // Add product to cart
+  rpc AddProduct(AddProductRequest) returns (AddProductResponse);
+
+  // Delete product from cart
+  rpc DeleteProduct(DeleteProductRequest) returns (DeleteProductResponse);
+
+  // Delete entire cart
+  rpc DeleteCart(DeleteCartRequest) returns (DeleteCartResponse);
+
+  // Update quantities of existing products
+  rpc UpdateQuantities(UpdateQuantitiesRequest) returns (UpdateQuantitiesResponse);
+
+  // Create order/reservation from cart
+  rpc CreateOrder(CreateOrderRequest) returns (CreateOrderResponse);
+}
+
+// Request messages
+message GetCartRequest {
+}
+
+message AddProductRequest {
+  ProductRequest product = 1;
+}
+
+message DeleteProductFromCartRequest {
+  DeleteProductRequest delete_request = 1;
+}
+
+message DeleteCartRequest {
+}
+
+message UpdateQuantitiesRequest {
+  Cart cart = 1;
+}
+
+message CreateOrderRequest {
+}
+
+// Response messages
+message GetCartResponse {
+  Cart cart = 1;
+}
+
+message AddProductResponse {
+  Cart cart = 1;
+}
+
+message DeleteProductResponse {
+  Cart cart = 1;
+}
+
+message DeleteCartResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+message UpdateQuantitiesResponse {
+  Cart cart = 1;
+}
+
+message CreateOrderResponse {
+  ReservationResponse reservation = 1;
+}

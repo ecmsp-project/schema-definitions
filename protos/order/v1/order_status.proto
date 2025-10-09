@@ -8,9 +8,20 @@ option java_outer_classname = "OrderStatusProto";
 
 enum OrderStatus {
   ORDER_STATUS_UNSPECIFIED = 0;
+
+  // Pre-fulfillment states
   ORDER_STATUS_PENDING = 1;
   ORDER_STATUS_PROCESSING = 2;
   ORDER_STATUS_PAID = 3;
   ORDER_STATUS_FAILED = 4;
   ORDER_STATUS_CANCELLED = 5;
+
+  // Post-fulfillment states
+  ORDER_STATUS_SHIPPED = 6;
+  ORDER_STATUS_DELIVERED = 7;
+
+  // Return states
+  ORDER_STATUS_RETURN_REQUESTED = 8;
+  ORDER_STATUS_RETURN_PROCESSING = 9;
+  ORDER_STATUS_RETURNED = 10;
 }

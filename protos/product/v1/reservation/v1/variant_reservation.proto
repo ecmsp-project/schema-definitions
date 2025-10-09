@@ -31,7 +31,7 @@ message RemoveVariantsReservationRequest {
 }
 
 message RemoveVariantsReservationResponse {
-  string message = 2;
+  string message = 2; //TODO: shouldn't be 1 here?
 }
 
 // -----------------------------------------------

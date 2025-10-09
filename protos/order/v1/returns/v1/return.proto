@@ -1,0 +1,25 @@
+syntax = "proto3";
+package order.v1.returns.v1;
+
+option java_multiple_files = true;
+option java_package = "com.ecmsp.order.v1.returns.v1";
+option java_outer_classname = "ReturnProto";
+
+import "order/v1/returns/v1/return_status.proto";
+
+//it should have also variant_id and quantity to choose what to return - as one tshirt might have couple sizes and
+//we can order 2 t-shirts of the same size and one of different size
+message ItemReturnDetails {
+  string item_id = 1;
+  string variant_id = 2;
+  int32 quantity = 3;
+  string reason = 4;
+}
+
+message Return {
+  string return_id = 1;
+  string order_id = 2;
+  repeated ItemReturnDetails items = 3;
+  ReturnStatus status = 4;
+  string created_at = 5;
+}

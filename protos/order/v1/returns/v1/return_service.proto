@@ -1,0 +1,49 @@
+syntax = "proto3";
+package order.v1.returns.v1;
+
+option java_multiple_files = true;
+option java_package = "com.ecmsp.order.v1.returns.v1";
+option java_outer_classname = "ReturnServiceProto";
+
+import "order/v1/returns/v1/return_status.proto";
+import "order/v1/returns/v1/return.proto";
+
+service ReturnService {
+  rpc CreateReturn(CreateReturnRequest) returns (CreateReturnResponse);
+  rpc GetReturn(GetReturnRequest) returns (GetReturnResponse);
+  rpc ListReturnsByUserId(ListReturnsByUserIdRequest) returns (ListReturnsByUserIdResponse);
+  rpc ListReturns(ListReturnsRequest) returns (ListReturnsResponse);
+}
+
+
+message CreateReturnRequest {
+  string order_id = 1;
+  repeated ItemReturnDetails items = 2;
+}
+
+message CreateReturnResponse {
+  string return_id = 1;
+  ReturnStatus status = 2;
+}
+
+message GetReturnRequest {
+  string return_id = 1;
+}
+
+message GetReturnResponse {
+  Return return = 1;
+}
+
+message ListReturnsRequest {
+}
+
+message ListReturnsResponse {
+  repeated Return returns = 1;
+}
+
+message ListReturnsByUserIdRequest {
+}
+
+message ListReturnsByUserIdResponse {
+  repeated Return returns = 1;
+}
