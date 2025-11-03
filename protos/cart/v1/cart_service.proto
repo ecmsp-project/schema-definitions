@@ -16,17 +16,18 @@ service CartService {
   // Add product to cart
   rpc AddProduct(AddProductRequest) returns (AddProductResponse);
 
+  // Subtract product from cart
+    rpc SubtractProduct(SubtractProductRequest) returns (SubtractProductResponse);
+
   // Delete product from cart
-  rpc DeleteProduct(DeleteProductRequest) returns (DeleteProductResponse);
+      rpc DeleteProduct(DeleteProductRequest) returns (DeleteProductResponse);
 
   // Delete entire cart
-  rpc DeleteCart(DeleteCartRequest) returns (DeleteCartResponse);
+      rpc DeleteCart(DeleteCartRequest) returns (DeleteCartResponse);
 
   // Update quantities of existing products
-  rpc UpdateQuantities(UpdateQuantitiesRequest) returns (UpdateQuantitiesResponse);
+      rpc UpdateQuantity(UpdateQuantityRequest) returns (UpdateQuantityResponse);
 
-  // Create order/reservation from cart
-  rpc CreateOrder(CreateOrderRequest) returns (CreateOrderResponse);
 }
 
 // Request messages
@@ -37,19 +38,17 @@ message AddProductRequest {
   ProductRequest product = 1;
 }
 
-message DeleteProductFromCartRequest {
-  DeleteProductRequest delete_request = 1;
+message SubtractProductRequest {
+  ProductRequest product = 1;
 }
 
 message DeleteCartRequest {
 }
 
-message UpdateQuantitiesRequest {
-  Cart cart = 1;
+message UpdateQuantityRequest {
+  ProductRequest product = 1;
 }
 
-message CreateOrderRequest {
-}
 
 // Response messages
 message GetCartResponse {
@@ -58,6 +57,10 @@ message GetCartResponse {
 
 message AddProductResponse {
   Cart cart = 1;
+}
+
+message SubtractProductResponse {
+  Cart cat = 1;
 }
 
 message DeleteProductResponse {
@@ -69,7 +72,7 @@ message DeleteCartResponse {
   string message = 2;
 }
 
-message UpdateQuantitiesResponse {
+message UpdateQuantityResponse {
   Cart cart = 1;
 }
 
