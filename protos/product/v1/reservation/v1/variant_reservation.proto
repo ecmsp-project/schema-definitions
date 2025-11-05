@@ -9,11 +9,11 @@ option java_outer_classname = "VariantReservationProto";
 // -----------------------------------------------
 
 message CreateVariantsReservationRequest {
-  repeated ReservedVariant items = 1;
+  string order_id = 1;
+  repeated ReservedVariant items = 2;
 }
 
 message CreateVariantsReservationResponse {
-  string reservation_id = 1;
   repeated string reserved_variant_ids = 3;
   repeated FailedReservationVariant failed_variants = 4;
 }
@@ -28,7 +28,7 @@ message FailedReservationVariant {
 // -----------------------------------------------
 
 message RemoveVariantsReservationRequest {
-  string reservation_id = 1;
+  string order_id = 1;
 }
 
 message RemoveVariantsReservationResponse {
@@ -38,7 +38,7 @@ message RemoveVariantsReservationResponse {
 // -----------------------------------------------
 
 message GetVariantsReservationRequest {
-  string reservation_id = 1;
+  string order_id = 1;
 }
 
 message GetVariantsReservationResponse {
