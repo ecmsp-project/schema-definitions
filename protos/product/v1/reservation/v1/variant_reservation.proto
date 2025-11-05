@@ -20,7 +20,7 @@ message CreateVariantsReservationResponse {
 
 // Message indicates the number of missing items
 message FailedReservationVariant {
-  string order_id = 1;
+  string variant_id = 1;
   int32 requested_quantity = 2;
   int32 available_quantity = 3;
 }
