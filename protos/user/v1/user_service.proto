@@ -32,7 +32,7 @@ message GetUserResponse {
 }
 
 message CreateUserRequest {
-  User user = 1;
+  UserToCreate user_to_create = 1;
 }
 
 message CreateUserResponse {
