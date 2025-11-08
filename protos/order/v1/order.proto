@@ -16,6 +16,8 @@ message OrderItemDetails {
   bool is_returnable = 7;
 }
 
+
+//TODO: reservation_id should be removed
 message Order {
   string order_id = 1;
   string reservation_id = 2;
@@ -24,6 +26,9 @@ message Order {
   repeated OrderItemDetails items = 5;
 }
 
-
+message CreateOrderItem {
+  string variant_id = 1;
+  int32 quantity = 2;
+}
 
 

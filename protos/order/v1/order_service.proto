@@ -14,6 +14,15 @@ service OrderService {
   rpc GetOrderItems(GetOrderItemsRequest) returns (GetOrderItemsResponse);
   rpc ListOrders(ListOrdersRequest) returns (ListOrdersResponse);
   rpc ListOrdersByUserId(ListOrdersByUserIdRequest) returns (ListOrdersByUserIdResponse);
+  rpc CreateOrder(CreateOrderRequest) returns (CreateOrderResponse);
+}
+
+message CreateOrderRequest {
+  repeated CreateOrderItem items = 1;
+}
+
+message CreateOrderResponse {
+  string order_id = 1;
 }
 
 message GetOrderRequest {
