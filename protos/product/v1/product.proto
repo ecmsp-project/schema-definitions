@@ -50,6 +50,7 @@ message GetProductsByQueryResponse {
 
 // -----------------------------------------------
 
+//TODO shouldn't we add name here?
 message ProductRepresentation {
 	string product_id = 1;
 	VariantDetail variant = 2;
