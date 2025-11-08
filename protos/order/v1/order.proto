@@ -9,11 +9,12 @@ import "order/v1/order_status.proto";
 message OrderItemDetails {
   string item_id = 1;
   string variant_id = 2;
-  int32 quantity = 3;
-  double price = 4;
-  string image_url = 5;
-  string description = 6;
-  bool is_returnable = 7;
+  string name = 3;
+  int32 quantity = 4;
+  double price = 5;
+  string image_url = 6;
+  string description = 7;
+  bool is_returnable = 8;
 }
 
 
@@ -24,11 +25,6 @@ message Order {
   OrderStatus order_status = 3;
   string date = 4;
   repeated OrderItemDetails items = 5;
-}
-
-message CreateOrderItem {
-  string variant_id = 1;
-  int32 quantity = 2;
 }
 
 

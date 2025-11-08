@@ -18,7 +18,7 @@ service OrderService {
 }
 
 message CreateOrderRequest {
-  repeated CreateOrderItem items = 1;
+  repeated OrderItemDetails items = 1;
 }
 
 message CreateOrderResponse {
