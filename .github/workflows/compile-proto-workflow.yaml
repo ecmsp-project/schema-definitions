@@ -49,7 +49,7 @@ jobs:
 
                     for SRC_FILE in common-files/*.java; do
                         PACKAGE_PATH=$(grep '^package ' "$SRC_FILE" | sed 's/package //' | sed 's/;//' | tr '.' '/')
-                        TARGET_DIR="src/main/java/$PACKAGE_PATH"
+                        TARGET_DIR="generated/src/main/java/$PACKAGE_PATH"
                         mkdir -p "$TARGET_DIR"
                         cp "$SRC_FILE" "$TARGET_DIR/"
                     done
