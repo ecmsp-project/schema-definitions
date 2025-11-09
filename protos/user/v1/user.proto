@@ -10,14 +10,9 @@ message UserId {
   string value = 1;
 }
 
-message RoleId {
-  string value = 1;
-}
-
 message Role {
-  RoleId id = 1;
-  string name = 2;
-  repeated string permissions = 3;
+  string name = 1;
+  repeated string permissions = 2;
 }
 
 message User {
