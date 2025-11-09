@@ -43,6 +43,7 @@ message GetOrderResponse {
   OrderStatus order_status = 3;
   string date = 4;
   repeated OrderItemDetails items = 5;
+  string client_id = 6;
 }
 
 
