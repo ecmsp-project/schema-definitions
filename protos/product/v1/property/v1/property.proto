@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+package product.v1.property.v1;
+
+option java_multiple_files = true;
+option java_package = "com.ecmsp.product.v1.property.v1";
+option java_outer_classname = "PropertyProto";
+
+// import "google/protobuf/struct.proto";
+// import "google/type/decimal.proto";
+
+// -----------------------------------------------
+
+message CreatePropertyRequest {
+    string category_id = 1;
+    string name = 2;
+    string unit = 3;
+    string data_type = 4;
+    PropertyRole role = 5;
+    repeated DefaultPropertyOptionValue default_property_option_values = 6;
+}
+
+enum PropertyRole {
+    PROPERTY_ROLE_INFO_UNSPECIFIED = 0;
+    PROPERTY_ROLE_SELECTABLE = 1;
+    PROPERTY_ROLE_REQUIRED = 2;
+}
+
+message DefaultPropertyOptionValue {
+    string display_text = 1;
+}
+
+message CreatePropertyResponse {
+    string id = 1;
+    // repeated string default_property_option_ids = 2;
+}
+
+// -----------------------------------------------
+
+message DeletePropertyRequest {
+    string id = 1;
+}
+
+message DeletePropertyResponse {
+    
+}

@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package product.v1.category.v1;
+
+option java_multiple_files = true;
+option java_package = "com.ecmsp.product.v1.category.v1";
+option java_outer_classname = "CategoryProto";
+
+// -----------------------------------------------
+
+message CreateCategoryRequest {
+  string name = 1;
+  string parent_category_id = 2;
+}
+
+message CreateCategoryResponse {
+  string id = 1;
+}
+
+// -----------------------------------------------
+
+message DeleteCategoryRequest {
+  string id = 1;
+}
+
+message DeleteCategoryResponse {
+
+}

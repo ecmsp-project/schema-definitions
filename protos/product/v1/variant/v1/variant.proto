@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+package product.v1.variant.v1;
+
+option java_multiple_files = true;
+option java_package = "com.ecmsp.product.v1.variant.v1";
+option java_outer_classname = "VariantProto";
+
+// import "google/protobuf/struct.proto";
+import "google/type/decimal.proto";
+
+// -----------------------------------------------
+
+message CreateVariantRequest {
+    string product_id = 1;
+    google.type.Decimal price = 2;
+    int32 stock_quantity = 3;
+    string description = 4;
+
+    repeated string variant_images = 5;
+    repeated VariantPropertyValue variant_property_values = 6;
+}
+
+message CreateVariantResponse {
+    string id = 1;
+}
+
+message VariantPropertyValue {
+    string property_id = 1;
+    string display_text = 2;
+}
+
+// -----------------------------------------------
+
+message DeleteVariantRequest {
+    string id = 1;
+}
+
+message DeleteVariantResponse {
+    
+}
+
+// -----------------------------------------------

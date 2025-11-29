@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package product.v1.property.v1;
+
+option java_multiple_files = true;
+option java_package = "com.ecmsp.product.v1.property.v1";
+option java_outer_classname = "PropertyServiceProto";
+
+import "product/v1/property/v1/property.proto";
+
+service PropertyService {
+  rpc CreateProperty(CreatePropertyRequest) returns (CreatePropertyResponse) {};
+  rpc DeleteProperty(DeletePropertyRequest) returns (DeletePropertyResponse) {};
+}
