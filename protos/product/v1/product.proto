@@ -6,66 +6,29 @@ option java_multiple_files = true;
 option java_package = "com.ecmsp.product.v1";
 option java_outer_classname = "ProductProto";
 
-import "google/protobuf/struct.proto";
+// import "google/protobuf/struct.proto";
 import "google/type/decimal.proto";
 
 // -----------------------------------------------
 
-message GetProductsRequest {
+message CreateProductRequest {
   string category_id = 1;
-  int32 page_size = 2;
-  string page_token = 3;
+  string name = 2;
+  google.type.Decimal approximate_price = 3;
+  google.type.Decimal delivery_price = 4;
+  string description = 5;
 }
 
-message GetProductsResponse {
-  repeated ProductRepresentation products_representation = 1;
-	string next_page_token = 2;
-}
-
-// -----------------------------------------------
-
-message GetVariantsDetailsRequest {
-	string product_id = 1;
-}
-
-message GetVariantsDetailsResponse {
-	repeated VariantDetail variants = 1;
+message CreateProductResponse {
+  string id = 1;
 }
 
 // -----------------------------------------------
 
-message GetProductsByQueryRequest {
-	string query = 1;
-	string category_id = 2; // it is optional, so can be left here
-
-	int32 page_size = 3;
-	string page_token = 4;
+message DeleteProductRequest {
+  string id = 1;
 }
 
-// Returns the products and one of its variant, as an representative on the website
-message GetProductsByQueryResponse {
-	repeated ProductRepresentation products_representation = 1;
-	string next_page_token = 2;
+message DeleteProductResponse {
+  
 }
-
-// -----------------------------------------------
-
-//TODO shouldn't we add name here?
-message ProductRepresentation {
-	string product_id = 1;
-	VariantDetail variant = 2;
-}
-
-message VariantDetail {
-	string variant_id = 1;
-	google.type.Decimal price = 2;
-
-	int32 stock_quantity = 3;
-	string image_url = 4;
-
-	string description = 5;
-	google.protobuf.Struct additional_properties = 6;
-
-}
-
-// -----------------------------------------------
