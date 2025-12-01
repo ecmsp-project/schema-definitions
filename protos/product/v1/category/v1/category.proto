@@ -11,6 +11,14 @@ option java_outer_classname = "CategoryProto";
 message CreateCategoryRequest {
   string name = 1;
   string parent_category_id = 2;
+  string child_category_id = 3;
+  CreateCategoryType create_category_type = 4;
+}
+
+enum CreateCategoryType {
+  CREATE_CATEGORY_TYPE_LEAF_UNSPECIFIED = 0;
+  CREATE_CATEGORY_TYPE_SPLIT = 1;
+  CREATE_CATEGORY_TYPE_ALL_SPLIT = 2;
 }
 
 message CreateCategoryResponse {
