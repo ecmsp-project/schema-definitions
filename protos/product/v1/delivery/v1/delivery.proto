@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+package product.v1.delivery.v1;
+
+option java_multiple_files = true;
+option java_package = "com.ecmsp.product.v1.delivery.v1";
+option java_outer_classname = "DeliveryProto";
+
+import "google/protobuf/timestamp.proto";
+
+// -----------------------------------------------
+
+message RecordDeliveryRequest {
+  repeated DeliveryItem items = 1;
+}
+
+message RecordDeliveryResponse {
+  string delivery_id = 1;
+  google.protobuf.Timestamp recorded_at = 2;
+}
+
+// -----------------------------------------------
+
+message ListDeliveriesRequest {
+  string variant_id = 1;
+  google.protobuf.Timestamp from_date = 2;
+  google.protobuf.Timestamp to_date = 3;
+}
+
+message ListDeliveriesResponse {
+  repeated Delivery deliveries = 1;
+}
+
+// -----------------------------------------------
+
+message Delivery {
+  string delivery_id = 1;
+  repeated DeliveryItem items = 2;
+  google.protobuf.Timestamp recorded_at = 3;
+}
+
+// -----------------------------------------------
+
+message DeliveryItem {
+  string variant_id = 1;
+  int32 quantity = 2;
+}

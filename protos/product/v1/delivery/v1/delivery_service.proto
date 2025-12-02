@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package product.v1.delivery.v1;
+
+option java_multiple_files = true;
+option java_package = "com.ecmsp.product.v1.delivery.v1";
+option java_outer_classname = "DeliveryServiceProto";
+
+import "product/v1/delivery/v1/delivery.proto";
+
+service DeliveryService {
+  rpc RecordDelivery(RecordDeliveryRequest) returns (RecordDeliveryResponse);
+  rpc ListDeliveries(ListDeliveriesRequest) returns (ListDeliveriesResponse);
+}
