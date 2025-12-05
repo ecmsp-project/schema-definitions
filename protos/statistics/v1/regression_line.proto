@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package statistics.v1;
+
+option java_multiple_files = true;
+option java_package = "com.ecmsp.statistics.v1";
+option java_outer_classname = "RegressionLineProto";
+
+message LinearRegressionLine {
+  double slope = 1;
+  double intercept = 2;
+  string valid_from = 3;
+  string valid_to = 4;
+  string estimated_depletion_date = 5;
+  double r_squared = 6;
+}
