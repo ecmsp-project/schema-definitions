@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package statistics.v1;
+
+option java_multiple_files = true;
+option java_package = "com.ecmsp.statistics.v1";
+option java_outer_classname = "StockDataProto";
+
+import "statistics/v1/regression_line.proto";
+
+message StockDataPoint {
+  string date = 1;
+  int32 stock_level = 2;
+}
+
+message StockLevelOverTime {
+  string variant_id = 1;
+  string product_name = 2;
+  repeated StockDataPoint data_points = 3;
+  repeated LinearRegressionLine regression_lines = 4;
+  LinearRegressionLine trend_line = 5;
+}

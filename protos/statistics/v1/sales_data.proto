@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package statistics.v1;
+
+option java_multiple_files = true;
+option java_package = "com.ecmsp.statistics.v1";
+option java_outer_classname = "SalesDataProto";
+
+import "google/type/decimal.proto";
+import "statistics/v1/regression_line.proto";
+
+message SalesDataPoint {
+  string date = 1;
+  int32 quantity = 2;
+  google.type.Decimal total_revenue = 3;
+}
+
+message VariantSalesOverTime {
+  string variant_id = 1;
+  string product_name = 2;
+  repeated SalesDataPoint data_points = 3;
+  repeated LinearRegressionLine regression_lines = 4;
+}

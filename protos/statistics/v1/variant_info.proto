@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package statistics.v1;
+
+option java_multiple_files = true;
+option java_package = "com.ecmsp.statistics.v1";
+option java_outer_classname = "VariantInfoProto";
+
+
+message VariantInfo {
+  string variant_id = 1;
+  string product_id = 2;
+  string product_name = 3;
+  bool has_sales_data = 4;
+  bool has_stock_data = 5;
+  string last_sale_date = 6;
+  optional int32 current_stock = 7;
+}
