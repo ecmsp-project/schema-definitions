@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+package statistics.v1;
+
+option java_multiple_files = true;
+option java_package = "com.ecmsp.statistics.v1";
+option java_outer_classname = "StatisticsServiceProto";
+
+import "statistics/v1/variant_info.proto";
+import "statistics/v1/sales_data.proto";
+import "statistics/v1/stock_data.proto";
+
+service StatisticsService {
+  rpc GetAvailableVariants(GetAvailableVariantsRequest) returns (GetAvailableVariantsResponse);
+  rpc GetVariantSalesOverTime(GetVariantSalesOverTimeRequest) returns (GetVariantSalesOverTimeResponse);
+  rpc GetStockLevelOverTime(GetStockLevelOverTimeRequest) returns (GetStockLevelOverTimeResponse);
+}
+
+message GetAvailableVariantsRequest {
+}
+
+message GetAvailableVariantsResponse {
+  repeated VariantInfo variants = 1;
+}
+
+message GetVariantSalesOverTimeRequest {
+  string variant_id = 1;
+  string from_date = 2;
+  string to_date = 3;
+  int32 trend_days = 4;
+}
+
+message GetVariantSalesOverTimeResponse {
+  VariantSalesOverTime sales_data = 1;
+}
+
+message GetStockLevelOverTimeRequest {
+  string variant_id = 1;
+  string from_date = 2;
+  string to_date = 3;
+  int32 trend_days = 4;
+}
+
+message GetStockLevelOverTimeResponse {
+  StockLevelOverTime stock_data = 1;
+}
