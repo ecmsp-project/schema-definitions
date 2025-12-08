@@ -18,7 +18,7 @@ message Cart {
 // CartProduct represents a product in the cart
 message CartProduct {
   int32 cart_id = 1;
-  int32 product_id = 2;
+  string product_id = 2;
   int32 quantity = 3;
 }
 
@@ -30,7 +30,7 @@ message ProductRequest {
 
 // DeleteProductRequest for removing a product from cart
 message DeleteProductRequest {
-  int32 product_id = 1;
+  string product_id = 1;
 }
 
 // ReservationResponse after creating an order
